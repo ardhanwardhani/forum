@@ -8,12 +8,13 @@
 			<div class="content">
 				<%= @thread.content %>
 			</div>
-			
-		<% if policy(@thread).edit? %>
-			<div class="edit">
-				<%= link_to 'Edit', edit_forum_thread_path(@thread), class: "btn" %>
-				<%= link_to 'Delete', forum_thread_path(@thread), method: :delete, class: "btn", data: {confirm: 'Apakah Anda ingin menghapus thread ini?'} %>
+		<% if user_signed_in? %>
+			<% if policy(@thread).edit? %>
+				<div class="edit">
+					<%= link_to 'Edit', edit_forum_thread_path(@thread), class: "btn" %>
+					<%= link_to 'Delete', forum_thread_path(@thread), method: :delete, class: "btn", data: {confirm: 'Apakah Anda ingin menghapus thread ini?'} %>
 			</div>
+		<% end %>
 
 		<% end %>
 
@@ -57,6 +58,8 @@
 				<%= f.submit 'Tangggapi', class: 'btn btn-primary form-control' %>
 			</div>
 		<% end %>
+	<% else %>
+	<center><h3><%= link_to 'Login', new_user_session_path %> untuk memberi tanggapan dalam thread ini</h3></center>
 	<% end %>
 	</div>
 </div>
