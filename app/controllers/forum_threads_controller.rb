@@ -9,7 +9,7 @@ class ForumThreadsController < ApplicationController
 			@threads = ForumThread.order(sticky_order: :asc).order(id: :desc)
 		end
 
-		@thread.paginate(per_page: 5, page: params[:id: :desc])
+		@threads = @thread.paginate(per_page: 5, page: params[:id: :desc])
 	end
 
 	def show
