@@ -20,9 +20,11 @@
 				<%= truncate t.content, length: 150 %>
 			</div>
 
+			<% if user_signed_in? %>
 			<div class="action">
 				<%= link_to 'Pin It', pinit_forum_thread_path(t), class: "btn", method: :put %>
 			</div>
+			<% end %>
 
 			<div class="count">
 				<%= t.forum_posts_count %> Obrolan
